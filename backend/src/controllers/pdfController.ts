@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import puppeteer from 'puppeteer';
+import fs from 'fs';
 import Assignment from '../models/Assignment';
 
 const buildPDFHTML = (assignment: {
@@ -137,9 +138,12 @@ export const generatePDF = async (req: Request, res: Response): Promise<void> =>
       sections: assignment.sections,
     });
 
+    const localChromium = '/usr/bin/chromium';
+    const executablePath = fs.existsSync(localChromium) ? localChromium : undefined;
+
     const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/chromium',
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      ...(executablePath ? { executablePath } : {}),
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
       headless: true,
     });
 
