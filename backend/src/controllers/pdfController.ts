@@ -138,8 +138,8 @@ export const generatePDF = async (req: Request, res: Response): Promise<void> =>
       sections: assignment.sections,
     });
 
-    const localChromium = '/usr/bin/chromium';
-    const executablePath = fs.existsSync(localChromium) ? localChromium : undefined;
+    const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || 
+                           (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 
     const browser = await puppeteer.launch({
       ...(executablePath ? { executablePath } : {}),
