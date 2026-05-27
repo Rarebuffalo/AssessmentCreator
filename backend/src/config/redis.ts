@@ -5,6 +5,7 @@ const redisConnection = new IORedis({
   port: parseInt(process.env.REDIS_PORT || '6379'),
   password: process.env.REDIS_PASSWORD || undefined,
   maxRetriesPerRequest: null,
+  tls: process.env.REDIS_PASSWORD ? {} : undefined, // Enable TLS conditionally for cloud providers
 });
 
 redisConnection.on('connect', () => {
