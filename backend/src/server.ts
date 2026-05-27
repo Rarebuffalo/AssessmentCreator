@@ -16,9 +16,12 @@ const server = http.createServer(app);
 initSocket(server);
 
 // Middleware
+const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
+const cleanClientUrl = clientUrl.endsWith('/') ? clientUrl.slice(0, -1) : clientUrl;
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    origin: [cleanClientUrl, `${cleanClientUrl}/`],
     credentials: true,
   })
 );
