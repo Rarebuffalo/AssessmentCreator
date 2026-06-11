@@ -1,6 +1,6 @@
-# VedaAI Assessment Creator
+# AI Assessment Creator
 
-VedaAI is a full-stack, state-of-the-art AI-powered assessment builder designed for educators. Teachers can create assignments, upload reference documents (PDFs/TXT), generate beautifully structured question papers using Google Gemini AI, track progress via real-time WebSocket updates, and download exam sheets as compiled PDFs.
+AI Assessment Creator is a full-stack, state-of-the-art AI-powered assessment builder designed for educators. Teachers can create assignments, upload reference documents (PDFs/TXT), generate beautifully structured question papers using Google Gemini AI, track progress via real-time WebSocket updates, and download exam sheets as compiled PDFs.
 
 ---
 
